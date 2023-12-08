@@ -1,0 +1,15 @@
+{
+    "name": "nutickets/szamlazz-phpapi",
+    "description": "Nutickets wapper for Szamlazz PHP API Agent.",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "SzamlaAgent\\": "src/szamlagent"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
