@@ -119,7 +119,7 @@ class SzamlaAgentResponse {
     public function __construct(SzamlaAgent $agent, array $response) {
         $this->setAgent($agent);
         $this->setResponse($response);
-        $this->setXmlSchemaType($response['headers']['Schema-Type']);
+        $this->setXmlSchemaType($response['headers']['schema-type']);
     }
 
     /**
@@ -138,7 +138,7 @@ class SzamlaAgentResponse {
         }
 
         if (isset($response['headers']) && !empty($response['headers'])) {
-            $headers = $response['headers'];
+            $headers = array_change_key_case($response['headers'], CASE_LOWER);
 
             if (isset($headers['szlahu_down']) && SzamlaAgentUtil::isNotBlank($headers['szlahu_down'])) {
                 throw new SzamlaAgentException(SzamlaAgentException::SYSTEM_DOWN, 500);

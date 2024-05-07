@@ -112,7 +112,7 @@ class InvoiceResponse {
      */
     public static function parseData(array $data, $type = SzamlaAgentResponse::RESULT_AS_TEXT) {
         $response   = new InvoiceResponse();
-        $headers = $data['headers'];
+        $headers = array_change_key_case($data['headers'], CASE_LOWER);
         $isPdf   = self::isPdfResponse($data);
         $pdfFile = '';
 
@@ -181,11 +181,11 @@ class InvoiceResponse {
             return true;
         }
 
-        if (isset($result['headers']['Content-Type']) && $result['headers']['Content-Type'] == 'application/pdf') {
+        if (isset($result['headers']['content-type']) && $result['headers']['content-type'] == 'application/pdf') {
             return true;
         }
 
-        if (isset($result['headers']['Content-Disposition']) && stripos($result['headers']['Content-Disposition'],'pdf') !== false) {
+        if (isset($result['headers']['content-disposition']) && stripos($result['headers']['content-disposition'],'pdf') !== false) {
             return true;
         }
         return false;

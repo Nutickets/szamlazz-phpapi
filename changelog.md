@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [2.10.18] - 2024.04.18
+
+### Removed
+
+  - szamlaagent/cert/cacert.pem
+  - removed functions: 'setCertificationPath' , 'getCertificationPath', 'getCertificationFile', 'getCertificationFileName'
+    - szamlaagent/src/szamlaagent/item/SzamlaAgent.php
+  - response header key check change (case insensitive handing)
+    - SzamlaAgentResponse.php, InvoiceResponse.php, ReceiptResponse.php 
 ## [2.10.17] - 2023.06.14
 
 ### Added
