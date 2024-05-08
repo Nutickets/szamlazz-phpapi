@@ -26,7 +26,7 @@ class SzamlaAgent {
     /**
      * Számla Agent API aktuális verzió
      */
-    const API_VERSION = '2.10.17';
+    const API_VERSION = '2.10.18';
 
     /**
      * Számla Agent API url
@@ -42,16 +42,6 @@ class SzamlaAgent {
      * Alapértelmezett karakterkódolás
      */
     const CHARSET = 'utf-8';
-
-    /**
-     * Alapértelmezett tanúsítvány fájlnév
-     */
-    const CERTIFICATION_FILENAME = 'cacert.pem';
-
-    /**
-     * Tanúsítványok útvonala
-     */
-    const CERTIFICATION_PATH = './cert';
 
     /**
      * PDF dokumentumok útvonala
@@ -167,13 +157,6 @@ class SzamlaAgent {
      * @var array
      */
     protected $environment = array();
-
-    /**
-     * Tanúsítvány útvonal
-     *
-     * @var string
-     */
-    private $certificationPath = self::CERTIFICATION_PATH;
 
     /**
      * @var CookieHandler
@@ -648,39 +631,6 @@ class SzamlaAgent {
      */
     public function setLogEmail($logEmail) {
         $this->logEmail = $logEmail;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCertificationFileName() {
-        return self::CERTIFICATION_FILENAME;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCertificationFile() {
-        if ($this->getCertificationPath() == self::CERTIFICATION_PATH) {
-            return SzamlaAgentUtil::getAbsPath(self::CERTIFICATION_PATH, $this->getCertificationFileName());
-        } else {
-            return $this->getCertificationPath() . DIRECTORY_SEPARATOR . $this->getCertificationFileName();
-        }
-    }
-
-    /**
-     * @return string
-     */
-    public function getCertificationPath() {
-        return $this->certificationPath;
-    }
-
-    /**
-     * @param   $certificationPath
-     * @example /var/www/new_path/certs
-     */
-    public function setCertificationPath($certificationPath) {
-        $this->certificationPath = $certificationPath;
     }
 
     /**
